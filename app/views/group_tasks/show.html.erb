@@ -1,0 +1,17 @@
+<h1> <%= @group_task.name %> </h1>
+<h3> Due Date:<%= @group_task.due_date %> </h3>
+<h3> <%= GroupTask.group_task_progress(@group_task) %> </h3>
+
+<br>
+
+<%= link_to 'Add Task to This Group Task', new_group_task_task_path(@group_task), { :class=>"button" } %>
+
+<ul>
+  <% @tasks.each do |t| %>
+    <li><%= t.name %></li>
+    User: <%= Task.find_user(t.user_id).email %>
+    <br>
+    <%= Task.status(t) %>
+
+  <%end%>
+</ul>
