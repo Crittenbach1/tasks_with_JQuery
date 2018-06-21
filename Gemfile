@@ -21,6 +21,10 @@ gem 'omniauth-facebook'
 
 gem 'pry'
 
+gem 'active_model_serializers'
+gem 'jquery-rails'
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
