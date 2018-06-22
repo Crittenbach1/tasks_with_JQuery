@@ -11,6 +11,10 @@ class TasksController < ApplicationController
       end
     end
 
+    def show
+      @task = Task.find_by(id: params[:id])
+    end
+
     def new
       @group_task = GroupTask.find_by(id: params[:group_task_id])
       if @group_task

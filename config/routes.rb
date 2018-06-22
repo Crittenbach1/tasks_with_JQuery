@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show] do
-    resources :tasks, only: [:index]
+    resources :tasks, only: [:index, :show]
   end
 
 
