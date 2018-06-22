@@ -47,13 +47,13 @@ class TasksController < ApplicationController
        @task.status = false
      end
      @task.save
-     redirect_to root_path
+     redirect_to user_task_path(@task)
     end
 
     def destroy
       @task = Task.find(params[:id])
       @task.delete
-      redirect_to root_path
+      redirect_to user_task_path(@task)
     end
 
       private
