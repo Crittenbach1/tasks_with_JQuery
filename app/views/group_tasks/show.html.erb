@@ -6,6 +6,9 @@
 
 <%= link_to 'Add Task to This Group Task', new_group_task_task_path(@group_task), { :class=>"button" } %>
 
+<br>
+<br>
+
 <div class="tasks_container"></div>
 
 
@@ -13,7 +16,8 @@
 
 $(function() {
   $.get(window.location.href + ".json").success(function(json){
-      $("div.tasks_container").append(json[0].name);
+      $("div.tasks_container").append("<h4>" + json[0].name + "</h4>");
+      $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + json[0].user_id + "'>View User</a>");
     });
 });
 </script>
