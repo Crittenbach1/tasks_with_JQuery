@@ -6,12 +6,14 @@
 
 <%= link_to 'Add Task to This Group Task', new_group_task_task_path(@group_task), { :class=>"button" } %>
 
-<ul>
-  <% @tasks.each do |t| %>
-    <li><%= t.name %></li>
-    User: <%= Task.find_user(t.user_id).email %>
-    <br>
-    <%= Task.status(t) %>
+<div class="tasks_container"></div>
 
-  <%end%>
-</ul>
+
+<script type="text/javascript" charset="utf-8">
+
+$(function() {
+  $.get(window.location.href + ".json").success(function(json){
+      $("div.tasks_container").append(json[0].name);
+    });
+});
+</script>

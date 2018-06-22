@@ -23,6 +23,10 @@ class GroupTasksController < ApplicationController
   def show
     @group_task = GroupTask.find_by(id: params[:id])
     @tasks = @group_task.tasks
+    respond_to do |format|
+      format.html { render show: @group_task }
+      format.json { render json: @tasks }
+    end
   end
 
 
