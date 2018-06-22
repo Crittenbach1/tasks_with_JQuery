@@ -22,8 +22,8 @@ $(function() {
 
 
   $.get(window.location.href + ".json").success(function(json){
-      $("div.tasks_container").append("<h4>" + json[0].name + "</h4>");
-      $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + json[0].user_id + "'>View User</a>");
+      $("div.tasks_container").html("<h4>" + json[0].name + "</h4>");
+      $("div.tasks_container").html("<a href='" + "http://localhost:3000/users/" + json[0].user_id + "'>View User</a>");
     });
 
 
