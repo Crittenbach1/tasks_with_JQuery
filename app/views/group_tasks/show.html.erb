@@ -12,25 +12,35 @@
 
 <div class="tasks_container"></div>
 <br>
-<%= link_to 'Next Task', "#{}", { :class=>"next_task" } %>
+<%= link_to 'Next Task', "#", { :class=>"next_task" } %>
 
 
 
 <script type="text/javascript" charset="utf-8">
+   task_count = 0;
+ $(function() {
 
-$(function() {
-
-
-  $.get(window.location.href + ".json").success(function(json){
-      $("div.tasks_container").html("<h4>" + json[0].name + "</h4>");
-      $("div.tasks_container").html("<a href='" + "http://localhost:3000/users/" + json[0].user_id + "'>View User</a>");
+   $.get(window.location.href + ".json").success(function(json){
+      if (task_count == 0){
+        $("div.tasks_container").append("<h4>" + json[0].name + "</h4>");
+        $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + json[0].user_id + "'>View User</a>");
+      };
     });
-    
+
+
     $(".next_task").on("click", function(e) {
-       $.get(window.location.href + ".json").success(function(json){
-          debugger
-        e.preventDefault();
-       });
+      e.preventDefault();
+      $.get(window.location.href + ".json").success(function(json){
+       task_count += 1;
+       if (json[task_count] == null) {
+        task_count = 0;
+      };
+       $(".tasks_container").empty();
+       $("div.tasks_container").html("<h4>" + json[task_count].name + "</h4>");
+       $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + json[task_count].user_id + "'>View User</a>");
+     });
     });
+
   });
+
 </script>
