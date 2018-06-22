@@ -1,6 +1,14 @@
 <h1>Users</h1>
 
-<% @users.each do |u| %>
-<li><%= link_to "#{u.email}", user_path(u), method: :get %></li>
-<br>
-<%end%>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $.get(window.location.href + ".json").success(function(json){
+       $("body").append("<ul>");
+         json.forEach(function(user){
+       $("body").append("<li>" + "<a href='" + window.location.href + "/" + user.id + "'>" + user.email + "</a>" + "</li>");
+         })
+       $("body").append("</ul>");
+    });
+});
+</script>

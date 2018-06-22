@@ -4,7 +4,6 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
   $.get(window.location.href + ".json").success(function(json){
-       var user_url = this.href
         $("body").append("<ul>");
        json.forEach(function(task){
          $("body").append("<li>" + "<a href='" + window.location.href + "/tasks/" + task.id + "'>" + task.name + "</a>" + "</li>");
