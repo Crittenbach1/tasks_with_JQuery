@@ -3,11 +3,45 @@
 function Task(attributes){
   this.name = attributes.name;
   this.id = attributes.id;
+  this.user_id = attributes.user_id;
+  this.status = attributes.status;
 }
 
+Task.prototype.status_function = function() {
+    if (this.status == true) {
+      return "Complete"
+    } else {
+      return "In Progress"
+    };
+}
 
+task_count = 0;
+$(function() {
 
+    $.get(window.location.href + ".json").success(function(json){
+       if (task_count == 0){
+         task = new Task(json[0])
+         $("div.tasks_container").append("<h4>" + task.name + "</h4>");
+         $("div.tasks_container").append("<h4>" + "Status:" + task.status_function() + "</h4>");
+         $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + task.user_id + "'>View User</a>");
+       };
+     });
 
+     $(".next_task").on("click", function(e) {
+       e.preventDefault();
+       $.get(window.location.href + ".json").success(function(json){
+        task_count += 1;
+        if (json[task_count] == null) {
+         task_count = 0;
+        };
+         task = new Task(json[task_count])
+        $(".tasks_container").empty();
+        $("div.tasks_container").html("<h4>" + task.name + "</h4>");
+        $("div.tasks_container").append("<h4>" + "Status:" + task.status_function() + "</h4>");
+        $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + task.user_id + "'>View User</a>");
+      });
+   });
+});
 
 
 
