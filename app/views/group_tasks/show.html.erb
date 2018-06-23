@@ -53,3 +53,15 @@
   <br>
   <%= f.submit "Add Task", { :class=>"button" } %>
 <% end %>
+
+
+<script type="text/javascript" charset="utf-8">
+
+  $(function(){
+    $("#new_task").on("submit", function(e){
+         debugger
+      e.preventDefault();
+    })
+  })
+
+</script>
