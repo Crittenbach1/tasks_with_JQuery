@@ -28,6 +28,7 @@ class TasksController < ApplicationController
       @group_task = GroupTask.find_by(id: params[:group_task_id])
       @task = @group_task.tasks.build(task_params)
       if @task.save
+        binding.pry
         redirect_to group_task_path(@group_task)
       else
         render :new
