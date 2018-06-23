@@ -1,17 +1,5 @@
 <h1>Users</h1>
 
-<script id="user-index-template" type="text/x-handlebars-template">
-  <li class="u-link">{{user_link}}</li>
-</script>
+<div class="user-index">
 
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $.get(window.location.href + ".json").success(function(json){
-       $("body").append("<ul>");
-         json.forEach(function(user){
-       $("body").append("<li>" + "<a href='" + window.location.href + "/" + user.id + "'>" + user.email + "</a>" + "</li>");
-         })
-       $("body").append("</ul>");
-    });
-});
-</script>
+</div>
