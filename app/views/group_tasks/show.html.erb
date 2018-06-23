@@ -2,12 +2,7 @@
 <h3> Due Date:<%= @group_task.due_date %> </h3>
 <h3> <%= GroupTask.group_task_progress(@group_task) %> </h3>
 
-<br>
 
-<%= link_to 'Add Task to This Group Task', new_group_task_task_path(@group_task), { :class=>"button" } %>
-
-
-<br>
 <br>
 
 <div class="tasks_container"></div>
@@ -44,3 +39,17 @@
   });
 
 </script>
+
+<br>
+
+<h3>Create New Task:</h3>
+
+<%= render partial: 'layouts/valid_errors', locals: {object: @task, object: @group_task}%>
+
+<%= form_for @task, url: group_task_tasks_path(@group_task) do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.label :name %>
+  <%= f.text_field :name %> <br>
+  <br>
+  <%= f.submit "Add Task", { :class=>"button" } %>
+<% end %>

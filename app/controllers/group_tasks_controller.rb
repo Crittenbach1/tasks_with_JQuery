@@ -21,6 +21,7 @@ class GroupTasksController < ApplicationController
   end
 
   def show
+    @task = Task.new
     @group_task = GroupTask.find_by(id: params[:id])
     @tasks = @group_task.tasks
     respond_to do |format|
