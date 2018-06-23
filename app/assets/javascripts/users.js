@@ -4,15 +4,6 @@ function User(attributes){
   this.id = attributes.id;
 }
 
-function showUsersTemplate(){
-  User.templateSource = $("#user-index-template").html();
-  User.template = Handlebars.compile(User.templateSource);
-}
-
-User.prototype.renderLI = function() {
-  return User.template(this)
-}
-
 
 $(function() {
   $.get(window.location.href + ".json").success(function(json){

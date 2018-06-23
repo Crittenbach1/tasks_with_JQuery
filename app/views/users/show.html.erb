@@ -1,14 +1,6 @@
 <h1><%= @user.email %></h1>
 
 
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $.get(window.location.href + ".json").success(function(json){
-        $("body").append("<ul>");
-       json.forEach(function(task){
-         $("body").append("<li>" + "<a href='" + window.location.href + "/tasks/" + task.id + "'>" + task.name + "</a>" + "</li>");
-       })
-        $("body").append("</ul>");
-    });
-});
-</script>
+<div class="task-index">
+
+</div>
