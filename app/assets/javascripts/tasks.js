@@ -7,6 +7,29 @@ function Task(attributes){
   this.status = attributes.status;
 }
 
+
+$(function(){
+  $("#new_task").on("submit", function(e){
+    url = this.action
+    data = {
+      'authenticity_token': $("input[name='authenticity_token']").val(),
+      'task': {
+        'user_id': $("#task_user_id").val(),
+        'name': $("#task_name").val()
+      }
+    }
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(response){
+        debugger
+      }
+    })
+    e.preventDefault();
+  })
+})
+
 Task.prototype.status_function = function() {
     if (this.status == true) {
       return "Complete"

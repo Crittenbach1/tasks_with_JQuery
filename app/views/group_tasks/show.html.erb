@@ -2,13 +2,13 @@
 <h3> Due Date:<%= @group_task.due_date %> </h3>
 <h3> <%= GroupTask.group_task_progress(@group_task) %> </h3>
 
-
 <br>
 
 <div class="tasks_container"></div>
-<br>
-<%= link_to 'Next Task', "#", { :class=>"next_task" } %>
 
+<br>
+
+<%= link_to 'Next Task', "#", { :class=>"next_task" } %>
 
 <br>
 
@@ -23,30 +23,3 @@
   <br>
   <%= f.submit "Add Task", { :class=>"button" } %>
 <% end %>
-
-
-<script type="text/javascript" charset="utf-8">
-
-  $(function(){
-    $("#new_task").on("submit", function(e){
-      url = this.action
-      data = {
-        'authenticity_token': $("input[name='authenticity_token']").val(),
-        'task': {
-          'user_id': $("#task_user_id").val(),
-          'name': $("#task_name").val()
-        }
-      }
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: data,
-        success: function(response){
-          debugger
-        }
-      })
-      e.preventDefault();
-    })
-  })
-
-</script>

@@ -1,3 +1,6 @@
 <h1><%= @task.name %></h1>
 <%= Task.status(@task) %>
-<%= button_to "Edit Task", edit_task_path(@task), method: :get %>
+
+<% if @task.user_id  == current_user.id %>
+  <%= button_to "Edit Task", edit_task_path(@task), method: :get %>
+<% end %>
