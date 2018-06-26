@@ -5,11 +5,12 @@ function User(attributes){
 }
 
 
-$(function() {
-  $.get(window.location.href + ".json").success(function(json){
+
+$(() => {
+  $.get(window.location.href + ".json").success((json) => {
        $("div.user-index").append("<ul>");
 
-       json.forEach(function(u){
+       json.forEach((u) => {
          var user = new User(u);
          $("div.user-index").append("<li>" + "<a href='" + window.location.href + "/" + user.id + "'>" + user.email + "</a>" + "</li>");
        });

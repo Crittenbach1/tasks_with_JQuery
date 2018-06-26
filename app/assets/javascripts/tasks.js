@@ -7,7 +7,6 @@ function Task(attributes){
   this.status = attributes.status;
 }
 
-
 $(function(){
   $("#new_task").on("submit", function(e){
     url = this.action
@@ -23,7 +22,6 @@ $(function(){
       url: url,
       data: data,
       success: function(response){
-        debugger
       }
     })
     e.preventDefault();
@@ -41,7 +39,7 @@ Task.prototype.status_function = function() {
 task_count = 0;
 $(function() {
 
-    $.get(window.location.href + ".json").success(function(json){
+    $.get(window.location.href + ".json").success((json) =>{
        if (task_count == 0){
          task = new Task(json[0])
          $("div.tasks_container").append("<h4>" + task.name + "</h4>");
@@ -50,9 +48,9 @@ $(function() {
        };
      });
 
-     $(".next_task").on("click", function(e) {
+     $(".next_task").on("click", (e) => {
        e.preventDefault();
-       $.get(window.location.href + ".json").success(function(json){
+       $.get(window.location.href + ".json").success((json) => {
         task_count += 1;
         if (json[task_count] == null) {
          task_count = 0;
@@ -68,11 +66,11 @@ $(function() {
 
 
 
-$(function() {
-  $.get(window.location.href + ".json").success(function(json){
+$(() => {
+  $.get(window.location.href + ".json").success((json) => {
        $("div.task-index").append("<ul>");
 
-       json.forEach(function(t){
+       json.forEach((t) => {
          var task = new Task(t);
          $("div.task-index").append("<li>" + "<a href='" + window.location.href + "/tasks/" + task.id + "'>" + task.name + "</a>" + "</li>");
        });
