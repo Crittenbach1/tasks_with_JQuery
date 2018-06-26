@@ -9,8 +9,8 @@ function Task(attributes){
 
 $(function(){
   $("#new_task").on("submit", function(e){
-    url = this.action
-    data = {
+    let url = this.action
+    let data = {
       'authenticity_token': $("input[name='authenticity_token']").val(),
       'task': {
         'user_id': $("#task_user_id").val(),
@@ -36,12 +36,12 @@ Task.prototype.status_function = function() {
     };
 }
 
-task_count = 0;
+let task_count = 0;
 $(function() {
 
     $.get(window.location.href + ".json").success((json) =>{
        if (task_count == 0){
-         task = new Task(json[0])
+         let task = new Task(json[0])
          $("div.tasks_container").append("<h4>" + task.name + "</h4>");
          $("div.tasks_container").append("<h4>" + "Status:" + task.status_function() + "</h4>");
          $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + task.user_id + "'>View User</a>");
@@ -55,7 +55,7 @@ $(function() {
         if (json[task_count] == null) {
          task_count = 0;
         };
-         task = new Task(json[task_count])
+         let task = new Task(json[task_count])
         $(".tasks_container").empty();
         $("div.tasks_container").html("<h4>" + task.name + "</h4>");
         $("div.tasks_container").append("<h4>" + "Status:" + task.status_function() + "</h4>");
@@ -71,7 +71,7 @@ $(() => {
        $("div.task-index").append("<ul>");
 
        json.forEach((t) => {
-         var task = new Task(t);
+         let task = new Task(t);
          $("div.task-index").append("<li>" + "<a href='" + window.location.href + "/tasks/" + task.id + "'>" + task.name + "</a>" + "</li>");
        });
 
