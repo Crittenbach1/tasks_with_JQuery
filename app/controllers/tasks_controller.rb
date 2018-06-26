@@ -52,9 +52,10 @@ class TasksController < ApplicationController
     end
 
     def destroy
+      #binding.pry
       @task = Task.find(params[:id])
       @task.delete
-      redirect_to user_task_path(@task)
+      redirect_to root_path
     end
 
       private

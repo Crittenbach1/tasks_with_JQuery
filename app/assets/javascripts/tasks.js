@@ -13,8 +13,6 @@ class Task {
         return "In Progress"
       };
   }
-
-
 }
 
 
@@ -39,13 +37,6 @@ $(function(){
   })
 })
 
-Task.prototype.status_function = function() {
-    if (this.status == true) {
-      return "Complete"
-    } else {
-      return "In Progress"
-    };
-}
 
 let task_count = 0;
 $(function() {
