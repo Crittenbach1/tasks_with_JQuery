@@ -1,7 +1,10 @@
+class User {
 
-function User(attributes){
-  this.email = attributes.email;
-  this.id = attributes.id;
+    constructor(attributes){
+      this.email = attributes.email;
+      this.id = attributes.id;
+    }
+
 }
 
 

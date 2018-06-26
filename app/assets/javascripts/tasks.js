@@ -1,11 +1,22 @@
+class Task {
+  constructor(attributes){
+    this.name = attributes.name;
+    this.id = attributes.id;
+    this.user_id = attributes.user_id;
+    this.status = attributes.status;
+  }
+
+  status_function () {
+      if (this.status == true) {
+        return "Complete"
+      } else {
+        return "In Progress"
+      };
+  }
 
 
-function Task(attributes){
-  this.name = attributes.name;
-  this.id = attributes.id;
-  this.user_id = attributes.user_id;
-  this.status = attributes.status;
 }
+
 
 $(function(){
   $("#new_task").on("submit", function(e){
