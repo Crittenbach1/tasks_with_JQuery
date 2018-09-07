@@ -1,5 +1,7 @@
 {
   "name": "cxds",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "dotenv": "^6.0.0"
+  }
 }
