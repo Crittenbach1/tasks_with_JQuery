@@ -1,3 +1,11 @@
+$(document).ready(function(){
+  attachTasksListeners();
+});
+
+function attachTasksListeners(){
+  $("#new_task").on("submit", newTask);
+};
+
 class Task {
   constructor(attributes){
     this.name = attributes.name;
@@ -16,8 +24,7 @@ class Task {
 }
 
 
-$(function(){
-  $("#new_task").on("submit", function(e){
+function newTask(e) {
     let url = this.action
     let data = {
       'authenticity_token': $("input[name='authenticity_token']").val(),
