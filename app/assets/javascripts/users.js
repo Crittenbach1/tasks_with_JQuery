@@ -1,3 +1,14 @@
+$(document).ready(function(){
+  attachUsersListeners();
+});
+
+function attachUsersListeners(){
+  if(window.location.href.indexOf("/users") != -1){
+    loadUsers();
+  };
+};
+
+
 class User {
 
     constructor(attributes){
@@ -7,9 +18,7 @@ class User {
 
 }
 
-
-
-$(() => {
+function loadUsers() {
   $.get(window.location.href + ".json").success((json) => {
        $("div.user-index").append("<ul>");
 
@@ -20,4 +29,4 @@ $(() => {
 
        $("div.user-index").append("</ul>");
     });
-});
+};
