@@ -3,7 +3,9 @@ $(document).ready(function(){
 });
 
 function attachTasksListeners(){
+  let task_count = 0;
   $("#new_task").on("submit", newTask);
+  $(".next_task").on("click", nextTask);
 };
 
 class Task {
@@ -41,37 +43,27 @@ function newTask(e) {
       }
     })
     e.preventDefault();
-  })
-})
-
+  }
 
 let task_count = 0;
-$(function() {
 
-    $.get(window.location.href + ".json").success((json) =>{
-       if (task_count == 0){
-         let task = new Task(json[0])
-         $("div.tasks_container").append("<h4>" + task.name + "</h4>");
-         $("div.tasks_container").append("<h4>" + "Status:" + task.status_function() + "</h4>");
-         $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + task.user_id + "'>View User</a>");
-       };
-     });
+function nextTask(e) {
+  e.preventDefault();
+  $.get(window.location.href + ".json").success((json) => {
+          if (json[task_count] == null) {
+             task_count = 0;
+          };
 
-     $(".next_task").on("click", (e) => {
-       e.preventDefault();
-       $.get(window.location.href + ".json").success((json) => {
-        task_count += 1;
-        if (json[task_count] == null) {
-         task_count = 0;
-        };
-         let task = new Task(json[task_count])
-        $(".tasks_container").empty();
-        $("div.tasks_container").html("<h4>" + task.name + "</h4>");
-        $("div.tasks_container").append("<h4>" + "Status:" + task.status_function() + "</h4>");
-        $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + task.user_id + "'>View User</a>");
-      });
+          let task = new Task(json[task_count])
+          $(".tasks_container").empty();
+          $("div.tasks_container").html("<h4>" + task.name + "</h4>");
+          $("div.tasks_container").append("<h4>" + "Status:" + task.status_function() + "</h4>");
+          $("div.tasks_container").append("<a href='" + "http://localhost:3000/users/" + task.user_id + "'>View User</a>");
+          task_count += 1;
    });
-});
+}
+
+
 
 
 
@@ -84,6 +76,6 @@ $(() => {
          $("div.task-index").append("<li>" + "<a href='" + window.location.href + "/tasks/" + task.id + "'>" + task.name + "</a>" + "</li>");
        });
 
-       $("div.user-index").append("</ul>");
+       $("div.task-index").append("</ul>");
     });
 });
