@@ -6,6 +6,10 @@ function attachTasksListeners(){
   let task_count = 0;
   $("#new_task").on("submit", newTask);
   $(".next_task").on("click", nextTask);
+
+  if(window.location.href.indexOf("/users/") != -1){
+    loadUserTasks();
+  };
 };
 
 class Task {
@@ -67,8 +71,9 @@ function nextTask(e) {
 
 
 
-$(() => {
-  $.get(window.location.href + ".json").success((json) => {
+function loadUserTasks(e) {
+
+   $.get(window.location.href + ".json").success((json) => {
        $("div.task-index").append("<ul>");
 
        json.forEach((t) => {
@@ -78,4 +83,4 @@ $(() => {
 
        $("div.task-index").append("</ul>");
     });
-});
+  };
