@@ -68,9 +68,6 @@ function nextTask(e) {
 }
 
 
-
-
-
 function loadUserTasks(e) {
 
    $.get(window.location.href + ".json").success((json) => {
@@ -83,4 +80,4 @@ function loadUserTasks(e) {
 
        $("div.task-index").append("</ul>");
     });
-  };
+}
