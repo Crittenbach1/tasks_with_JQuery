@@ -3,9 +3,9 @@ $(document).ready(function(){
 });
 
 function attachUsersListeners(){
-  if(window.location.href.indexOf("/users") != -1){
-    loadUsers();
-  };
+    if($('h1').is('.users-index')){
+       loadUsers();
+    };
 };
 
 
