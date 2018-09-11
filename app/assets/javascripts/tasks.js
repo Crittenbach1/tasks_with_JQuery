@@ -3,12 +3,11 @@ $(document).ready(function(){
 });
 
 function attachTasksListeners(){
-  let task_count = 0;
   $("#new_task").on("submit", newTask);
   $(".next_task").on("click", nextTask);
 
-  if(window.location.href.indexOf("/users/") != -1){
-    loadUserTasks();
+  if($('h1').is('.user-task-index')){
+     loadUserTasks();
   };
 };
 
@@ -48,6 +47,8 @@ function newTask(e) {
     })
     e.preventDefault();
   }
+
+
 
 let task_count = 0;
 
